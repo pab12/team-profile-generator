@@ -43,15 +43,12 @@ function startProfile() {
         // console.log('that', choice.choices);
         switch (`${choices}`) {
           case 'Engineer':
-            console.log('Engineerrr');
             engineer();
             break;
           case 'Intern':
-            console.log('Intern');
             intern();
             break;
           case 'Done':
-            console.log('Done');
             done();
             break;
         }
@@ -71,11 +68,9 @@ function startProfile() {
         data.email,
         data.officeNumber,
       )
-      console.log("it is",manager);
-      console.log(`Manager's name: ${manager.getName()}`);
       let allEmployees = team.push(manager);
-      console.log("hello", allEmployees);
-      console.log("howdy", team);
+      // console.log("hello", allEmployees);
+      // console.log("howdy", team);
       choices();
       //engineer();
     })
@@ -97,7 +92,7 @@ function startProfile() {
       )
       console.log(engineer);
       let allEmployees = team.push(engineer);
-      console.log("howdy", team);
+     // console.log("howdy", team);
       choices();
     })
   };
@@ -128,6 +123,7 @@ function startProfile() {
     console.log("done");
     writeFile();
   };
+  console.log("Manger info first");
   manager();
 }
 
