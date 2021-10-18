@@ -111,7 +111,6 @@ function startProfile() {
         data.email,
         data.school
       )
-      console.log(intern);
       let allEmployees = team.push(intern);
       console.log("Updated array", team);
       choices();
@@ -120,10 +119,10 @@ function startProfile() {
 
   function done() {
     // generate the HTML
-    console.log("done");
+    console.log("Done, you can close application now");
     writeFile();
   };
-  console.log("Manger info first");
+  console.log("Manager info first");
   manager();
 }
 
