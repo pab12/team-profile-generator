@@ -3,6 +3,9 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const fs = require('fs');
+const team = [];
+const pageTemplate = require('./pageTemplate');
 // employees
 
 const question1 = {
@@ -21,39 +24,6 @@ const question3 = {
   message: "What is your employee email ?",
 };
 
-// const questions = () => {
-//   return inquirer
-//   .prompt([{
-//     type: 'input',
-//     name: 'name',
-//     message: 'what is the employee name?'
-//   },
-//   {
-//     type: 'text',
-//     name: 'employeeID',
-//     message: "what is the employee ID"
-//   },
-//   {
-//     type: 'text',
-//     name: 'email',
-//     message: 'What is their email address?'
-//   },
-//   ])
-//   .then((answers) => { manager();
-//     const {name,employeeID,email} = answers;
-//     // console.log('this',answers);
-//     // console.log(name);
-//     // console.log('class',Employee);
-//     let newUser = new Employee(name,employeeID,email);
-//     console.log(newUser);
-//   })
-
-
-
-
-
-
-
 
 function startProfile() {
 
@@ -68,7 +38,7 @@ function startProfile() {
         }
       ).then((choice) => {
         const { choices } = choice;
-        this.choices =choices;
+        this.choices = choices;
         // console.log('this is',choices);
         // console.log('that', choice.choices);
         switch (`${choices}`) {
@@ -100,55 +70,83 @@ function startProfile() {
         data.email,
         data.officeNumber
       )
-      console.log(manager);
-       console.log(`Manager's name: ${manager.getName()}`);
+      console.log("it is",manager);
+      console.log(`Manager's name: ${manager.getName()}`);
+      let allEmployees = team.push(manager);
+      console.log("hello", allEmployees);
+      console.log("howdy", team);
       choices();
       //engineer();
     })
   };
 
   // // engineer
-function engineer() {
-  inquirer.prompt([question1, question2, question3, {
-    type: 'input',
-    name: 'github',
-    message: 'What is their github Username?'
-  }]).then((data) => {
-    const engineer = new Engineer(
-      data.name,
-      data.id,
-      data.email,
-      data.github
-    )
-    console.log(engineer);
-    choices();
-  })
-};
+  function engineer() {
+    inquirer.prompt([question1, question2, question3, {
+      type: 'input',
+      name: 'github',
+      message: 'What is their github Username?'
+    }]).then((data) => {
+      const engineer = new Engineer(
+        data.name,
+        data.id,
+        data.email,
+        data.github
+      )
+      console.log(engineer);
+      let allEmployees = team.push(engineer);
+      console.log("howdy", team);
+      choices();
+    })
+  };
 
-// // intern 
-function intern() {
-  inquirer.prompt([question1, question2, question3, {
-    type: 'input',
-    name: 'school',
-    message: 'What school do they go to?'
-  }]).then((data) => {
-    const intern = new Intern(
-      data.name,
-      data.id,
-      data.email,
-      data.school
-    )
-    console.log(intern);
-    choices();
-  })
-};
+  // // intern 
+  function intern() {
+    inquirer.prompt([question1, question2, question3, {
+      type: 'input',
+      name: 'school',
+      message: 'What school do they go to?'
+    }]).then((data) => {
+      const intern = new Intern(
+        data.name,
+        data.id,
+        data.email,
+        data.school
+      )
+      console.log(intern);
+      let allEmployees = team.push(intern);
+      console.log("Updated array", team);
+      choices();
+    })
+  };
 
-function done(){
-  // generate the HTML
-  console.log("done");
-};
+  function done() {
+    // generate the HTML
+    console.log("done");
+    writeFile();
+  };
   manager();
 }
+
+
+const writeFile = (fileContent) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile("./dist/index.html", pageTemplate(team), (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({
+        ok: true,
+        message: "File created",
+      });
+    });
+  });
+};
+
+
+module.exports = { writeFile };
+
 startProfile();
 
 // console.log(Manager's name: ${manager.getName()});
