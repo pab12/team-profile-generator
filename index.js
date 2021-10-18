@@ -65,10 +65,11 @@ function startProfile() {
       message: 'What is their office number'
     }]).then((data) => {
       const manager = new Manager(
+        "Manager",
         data.name,
         data.id,
         data.email,
-        data.officeNumber
+        data.officeNumber,
       )
       console.log("it is",manager);
       console.log(`Manager's name: ${manager.getName()}`);
@@ -88,6 +89,7 @@ function startProfile() {
       message: 'What is their github Username?'
     }]).then((data) => {
       const engineer = new Engineer(
+        "Engineer",
         data.name,
         data.id,
         data.email,
@@ -108,6 +110,7 @@ function startProfile() {
       message: 'What school do they go to?'
     }]).then((data) => {
       const intern = new Intern(
+        "Intern",
         data.name,
         data.id,
         data.email,
