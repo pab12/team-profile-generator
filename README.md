@@ -9,7 +9,12 @@ A team profie generator application in order to input the manager, Engineer, or 
 * node
 * bootstrap
 
-## Screen Shot
+## Screen Shot ex.
+![Team-profile-generator-ss](https://user-images.githubusercontent.com/32551273/137821286-c3a57cf0-a811-413b-ab99-ed62b533c48d.png)
+
+## Walkthrough Video/test's
+https://watch.screencastify.com/v/DMAT6I7jUfjaOn2FG261
+
 
 ## Websites
 https://github.com/pab12/team-profile-generator

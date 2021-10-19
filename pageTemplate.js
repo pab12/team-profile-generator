@@ -1,13 +1,4 @@
 
-
-function add() {
-  return `
-  Hello`
-}
-// Manager's name: ${manager.getName()}
-
-
-
 function template(team) {
   let template = "";
 
@@ -74,7 +65,7 @@ function template(team) {
   
 </body>
 </html>`
-  console.log("this", `${team[0]}`)
+
   
   return template;
 
@@ -82,9 +73,3 @@ function template(team) {
 }
 //template(team);
 module.exports = template;
-
-
-// Manager's name: ${team[i].getName()}
-// ${team[i].getEmail()}
-// ${team[i].getId()}
-// ${add()}

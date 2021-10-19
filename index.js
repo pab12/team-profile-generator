@@ -39,8 +39,7 @@ function startProfile() {
       ).then((choice) => {
         const { choices } = choice;
         this.choices = choices;
-        // console.log('this is',choices);
-        // console.log('that', choice.choices);
+       
         switch (`${choices}`) {
           case 'Engineer':
             engineer();
@@ -69,8 +68,7 @@ function startProfile() {
         data.officeNumber,
       )
       let allEmployees = team.push(manager);
-      // console.log("hello", allEmployees);
-      // console.log("howdy", team);
+      
       choices();
       //engineer();
     })
@@ -90,9 +88,9 @@ function startProfile() {
         data.email,
         data.github
       )
-      console.log(engineer);
+      // console.log(engineer);
       let allEmployees = team.push(engineer);
-     // console.log("howdy", team);
+     
       choices();
     })
   };
@@ -112,7 +110,7 @@ function startProfile() {
         data.school
       )
       let allEmployees = team.push(intern);
-      console.log("Updated array", team);
+      console.log("Team info", team);
       choices();
     })
   };
